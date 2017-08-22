@@ -1,0 +1,6 @@
+{
+    "REPOSITORY_URL": "git@gitlab.com:giovaneliberato/autosaver_test.git",
+    "TARGET_FOLDER": "../../autosaver_test",
+    "TIME_FORMAT": "%b %d %Y %H:%M:%S",
+    "GPG_USER": "33D1CE78"
+}

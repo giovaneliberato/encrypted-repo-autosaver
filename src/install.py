@@ -1,9 +1,11 @@
 
 import sh
-from constants import REPOSITORY_URL, TARGET_FOLDER
+from config import ConfigManager
 
-git = sh.git.bake(_cwd=TARGET_FOLDER)
-git_crypt = sh.git_crypt.bake(_cwd=TARGET_FOLDER)
+
+config = ConfigManager()
+git = sh.git.bake(_cwd=config.get("TARGET_FOLDER"))
+git_crypt = sh.git_crypt.bake(_cwd=config.get("TARGET_FOLDER"))
 
 def install():
     git_crypt_init()
@@ -11,13 +13,13 @@ def install():
 
 def git_crypt_init():
     wait(git.init())
-    wait(git.remote.add('origin', REPOSITORY_URL))
+    wait(git.remote.add('origin', config.get("REPOSITORY_URL")))
     wait(git_crypt.init())
-    wait(git_crypt('add-gpg-user', '33D1CE78'))
+    wait(git_crypt('add-gpg-user', config.get("GPG_USER")))
 
 def scaffhold_files():
-    sh.mkdir(TARGET_FOLDER + '/content')
-    sh.cp('resources/gitattributes.example', TARGET_FOLDER + '/.gitattributes')
+    sh.mkdir(config.get("TARGET_FOLDER") + '/content')
+    sh.cp('resources/gitattributes.example', config.get("TARGET_FOLDER") + '/.gitattributes')
 
 def wait(cmd):
     cmd.wait()
