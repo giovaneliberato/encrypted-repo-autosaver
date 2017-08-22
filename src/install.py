@@ -17,7 +17,7 @@ def git_crypt_init():
 
 def scaffhold_files():
     sh.mkdir(TARGET_FOLDER + '/content')
-    sh.cp('gitattributes.example', TARGET_FOLDER + '/.gitattributes')
+    sh.cp('resources/gitattributes.example', TARGET_FOLDER + '/.gitattributes')
 
 def wait(cmd):
     cmd.wait()
