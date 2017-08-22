@@ -1,0 +1,3 @@
+*.gpg diff=gpg
+content/* filter=git-crypt diff=git-crypt
+content/**/* filter=git-crypt diff=git-crypt
